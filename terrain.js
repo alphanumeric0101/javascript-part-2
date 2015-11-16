@@ -77,15 +77,43 @@ function terrain(x,y){
 
 var mapped = terrain(20,20);
 
+function apocalypse(map){
+    
+    for (var k = 0; k < map.length; k++) {
+        var row = map[k];
+        for (var l = 0; l < row.length; l++) {
+            
+        var action = Math.floor((Math.random() * 3) +1);
+        if (action === 1) {
+                    row[l].burn;
+            }
+        if (action === 2) {
+                    row[l].freeze;
+            }
+        }
+    }
+}
+        
 function printMapped(map){
     for (var k = 0; k < map.length; k++) {
         var line = [];
         var row = map[k];
         for (var l = 0; l < row.length; l++) {
-            line.push(row[l].height);
+            if (row[l].condition === 'burning'){
+                line.push(9);
+            }
+            else if (row[l].condition === 'freezing'){
+                line.push(0);
+            }
+            else {
+                line.push(row[l].height);
+            }
         }
         console.log(line.join(' '));
     }
 }
 
+apocalypse(mapped);
 printMapped(mapped);
+
+console.log(mapped[3][4].condition)
