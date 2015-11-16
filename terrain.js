@@ -3,7 +3,6 @@
 var typeArray = ['grass', 'rocks', 'water'];
 var randType = typeArray[Math.floor(Math.random() * typeArray.length)];
 var typeCond = ['burning', 'normal', 'frozen'];
-var randCond = typeCond[Math.floor(Math.random() * typeCond.length)];
 
 
 function Tile(x, y) {
@@ -11,7 +10,7 @@ function Tile(x, y) {
         this.y = y;
         this.height = Math.floor((Math.random() * 3) +1);
         this.type = randType;
-        this.condition = randCond;
+        this.condition = typeCond[Math.floor(Math.random() * typeCond.length)];
 }
 
 Tile.prototype = {
@@ -52,7 +51,7 @@ function terrain(x,y){
         outter.push(inner);
     }
     
-    
+    /*
     for (var k = 0; k < outter.length; k++) {
         var line = [];
         inner = outter[k];
@@ -75,19 +74,18 @@ function terrain(x,y){
 
 
 
-var mapped = terrain(20,20);
+
 
 function apocalypse(map){
-    
     for (var k = 0; k < map.length; k++) {
         var row = map[k];
+        
         for (var l = 0; l < row.length; l++) {
-            
-        var action = Math.floor((Math.random() * 3) +1);
-        if (action === 1) {
+        var action = Math.floor((Math.random() * 3)+1);
+        if (action < 2) {
                     row[l].burn;
             }
-        if (action === 2) {
+        else if (action > 2) {
                     row[l].freeze;
             }
         }
@@ -102,7 +100,7 @@ function printMapped(map){
             if (row[l].condition === 'burning'){
                 line.push(9);
             }
-            else if (row[l].condition === 'freezing'){
+            else if (row[l].condition === 'frozen'){
                 line.push(0);
             }
             else {
@@ -113,7 +111,7 @@ function printMapped(map){
     }
 }
 
+var mapped = terrain(20,20);
 apocalypse(mapped);
 printMapped(mapped);
 
-console.log(mapped[3][4].condition)
