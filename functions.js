@@ -34,15 +34,18 @@ function alphabetizeEmails(a,b) {
 var entries = [
     {
         name: "Malcom X",
-        email: "bpp@riseup.net"
+        email: "bpp@riseup.net",
+        num : 1
     },
     {
         name: "Marc Garvy",
-        email: "nomoss@mail.net"
+        email: "nomoss@mail.net",
+        num: 2
     },
     {
         name: "Jerry Seinfeld",
-        email: "jcomedy@mail.net"
+        email: "jcomedy@mail.net",
+        num: 3
     }
 ];
     
@@ -58,4 +61,11 @@ var entries = [
 
 var numbers = [1, 4, 9];
 var squares = numbers.map(function(num){return num*num});
-console.log(squares);
+
+// square each num property in an array of objects
+
+var squareNum = entries.map(function(a){
+    return a.num * a.num;
+});
+
+console.log(squareNum);
