@@ -68,4 +68,36 @@ var squareNum = entries.map(function(a){
     return a.num * a.num;
 });
 
-console.log(squareNum);
+// console.log(squareNum);
+
+//operationMaker
+
+function operationMaker(operation){
+    if (operation === 'add')
+        {
+            return function(a,b){
+                return a + b;
+            }
+        };
+    
+    if (operation === 'subtract'){
+        return function(a,b){
+            return a - b;
+        };
+    }
+    if (operation === 'mult'){
+        return function(a,b){
+            return a * b;
+        };
+    }
+    if (operation === 'div'){
+        return function(a,b){
+            return  a / b;
+        };
+    }
+}
+
+var adder = operationMaker('add');
+var sum = adder(5, 10);
+
+console.log(sum);
