@@ -53,3 +53,9 @@ var entries = [
 
             console.log(entries.sort(alphabetizeEmails));
     */
+
+//square each number in an array    
+
+var numbers = [1, 4, 9];
+var squares = numbers.map(function(num){return num*num});
+console.log(squares);
