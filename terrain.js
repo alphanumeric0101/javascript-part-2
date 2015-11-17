@@ -1,7 +1,6 @@
 // level the playing field
 
 var typeArray = ['grass', 'rocks', 'water'];
-var randType = typeArray[Math.floor(Math.random() * typeArray.length)];
 var typeCond = ['burning', 'normal', 'frozen'];
 
 
@@ -9,7 +8,7 @@ function Tile(x, y) {
         this.x = x;
         this.y = y;
         this.height = Math.floor((Math.random() * 3) +1);
-        this.type = randType;
+        this.type = typeArray[Math.floor(Math.random() * typeArray.length)];
         this.condition = typeCond[Math.floor(Math.random() * typeCond.length)];
 }
 
